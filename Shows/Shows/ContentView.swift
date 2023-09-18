@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  ShowsApp
+//  Shows
 //
 //  Created by Matej Kuprešak on 18.09.2023..
 //
