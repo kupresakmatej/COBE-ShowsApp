@@ -18,7 +18,7 @@ struct SearchView: View {
                 Color("PrimaryBlack")
                 
                 ScrollView {
-                    ForEach(viewModel.shows ?? [Show](), id: \.self) { show in
+                    ForEach(viewModel.shows, id: \.self) { show in
                         NavigationLink {
                             Text("Details view")
                         } label: {
@@ -35,11 +35,11 @@ struct SearchView: View {
                                         .font(.headline)
                                         .foregroundColor(Color("PrimaryWhite"))
                                     
-                                    Text("\(show.language)")
+                                    Text("\(viewModel.getDate(show: show))")
                                         .font(.subheadline)
                                         .foregroundColor(Color("PrimaryLightGray"))
                                     
-                                    Text("\(show.genres.count)")
+                                    Text("\(show.genres.joined(separator: ", "))")
                                         .font(.subheadline)
                                         .foregroundColor(Color("PrimaryLightGray"))
                                 }
@@ -62,6 +62,9 @@ struct SearchView: View {
         .foregroundColor(Color("PrimaryWhite"))
         .onAppear {
             viewModel.fetchData(query: "drama")
+        }
+        .onChange(of: searchText) { newSearchText in
+            viewModel.fetchData(query: newSearchText)
         }
     }
 }

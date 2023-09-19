@@ -17,4 +17,5 @@ struct Show: Codable, Hashable {
     let name: String
     let language: String
     let genres: [String]
+    let premiered: String
 }

@@ -12,16 +12,24 @@ final class SearchViewModel: ObservableObject {
     @ObservedObject var networkingService = NetworkingService()
     
     @Published var shows = [Show]()
+    
+    func getDate(show: Show) -> String {
+        let date = show.premiered.split(separator: "-")
+        
+        let year = date[0]
+        
+        return String(year)
+    }
 }
 
 extension SearchViewModel {
     func fetchData(query: String) {
         let request = Request(
-            path: "/search/shows?q=girls",
+            path: "/search/shows?q=",
             method: .get,
             type: .json,
             parameters: nil,
-            query: nil)
+            query: query)
         
         networkingService.fetch(with: request) { [weak self] result in
             switch result {
