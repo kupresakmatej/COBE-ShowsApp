@@ -9,11 +9,11 @@ import Foundation
 import SwiftUI
 
 protocol NetworkingServiceProtocol {
-    func fetch(with request: Request, completion: @escaping (Result<[Show], ErrorHandler>) -> Void)
+    func fetch(with request: Request, completion: @escaping (Result<[SearchResponse], ErrorHandler>) -> Void)
 }
 
 final class NetworkingService: ObservableObject, NetworkingServiceProtocol {
-    func fetch(with request: Request, completion: @escaping (Result<[Show], ErrorHandler>) -> Void) {
+    func fetch(with request: Request, completion: @escaping (Result<[SearchResponse], ErrorHandler>) -> Void) {
         guard let urlRequest = configureRequest(request) else { return }
         let urlSession: URLSession = URLSession.shared
         
@@ -25,7 +25,7 @@ final class NetworkingService: ObservableObject, NetworkingServiceProtocol {
                 if let data = data {
                     // parse data
                     do {
-                        var json = try JSONDecoder().decode([Show].self, from: data)
+                        var json = try JSONDecoder().decode([SearchResponse].self, from: data)
                         print(json)
                         completion(.success(json))
                     } catch {

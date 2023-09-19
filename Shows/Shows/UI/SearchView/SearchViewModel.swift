@@ -17,7 +17,7 @@ final class SearchViewModel: ObservableObject {
 extension SearchViewModel {
     func fetchData(query: String) {
         let request = Request(
-            path: "/search/shows?q=",
+            path: "/search/shows?q=girls",
             method: .get,
             type: .json,
             parameters: nil,
@@ -28,7 +28,7 @@ extension SearchViewModel {
             case .success(let shows):
                 print("SUCCESS")
                 DispatchQueue.main.async {
-                    self?.shows = shows
+//                    self?.shows = shows.f
                     print("\(shows.count)")
                 }
             case .failure(let error):

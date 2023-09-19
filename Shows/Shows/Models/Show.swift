@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct SearchResponse: Codable {
+    let show: [Show]
+}
+
 struct Show: Codable, Hashable {
     let id: Int
     let url: String
