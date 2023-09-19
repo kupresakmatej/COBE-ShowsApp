@@ -28,7 +28,7 @@ extension SearchViewModel {
             case .success(let shows):
                 print("SUCCESS")
                 DispatchQueue.main.async {
-//                    self?.shows = shows.f
+                    self?.shows = shows
                     print("\(shows.count)")
                 }
             case .failure(let error):

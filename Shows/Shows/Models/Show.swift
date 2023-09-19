@@ -8,7 +8,7 @@
 import Foundation
 
 struct SearchResponse: Codable {
-    let show: [Show]
+    let show: Show
 }
 
 struct Show: Codable, Hashable {
