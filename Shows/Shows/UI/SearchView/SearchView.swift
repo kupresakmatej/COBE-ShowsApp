@@ -35,6 +35,9 @@ struct SearchView: View {
                 HStack {
                     SearchBar(searchText: $searchText)
                         .foregroundColor(Color("PrimaryBlack"))
+                        .onSubmit {
+                            viewModel.fetchData(query: searchText)
+                        }
                     
                     Button() {
                         viewModel.fetchData(query: searchText)
@@ -52,9 +55,9 @@ struct SearchView: View {
         .onAppear {
             viewModel.fetchData(query: defaultSearch)
         }
-//        .onChange(of: searchText) { newSearchText in
-//            viewModel.fetchData(query: newSearchText)
-//        }
+        .onChange(of: searchText) { newSearchText in
+            viewModel.fetchData(query: newSearchText)
+        }
     }
 }
 

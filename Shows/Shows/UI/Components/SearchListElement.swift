@@ -23,6 +23,7 @@ struct SearchListElement: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 80, height: 100)
+                        .clipShape(RoundedRectangle(cornerRadius: 5))
                 case .failure:
                     Image(systemName: "xmark.octagon")
                         .resizable()
