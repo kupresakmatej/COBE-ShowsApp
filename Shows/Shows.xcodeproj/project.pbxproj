@@ -16,6 +16,8 @@
 		C26FBECD2AB98E8E00DD791A /* NetworkConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26FBECC2AB98E8E00DD791A /* NetworkConfiguration.swift */; };
 		C26FBECF2AB9916B00DD791A /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26FBECE2AB9916B00DD791A /* NetworkingService.swift */; };
 		C26FBED12AB9956200DD791A /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26FBED02AB9956200DD791A /* SearchViewModel.swift */; };
+		C26FBED42ABACE3100DD791A /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26FBED32ABACE3100DD791A /* SearchBar.swift */; };
+		C26FBED62ABADA4000DD791A /* SearchListElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26FBED52ABADA4000DD791A /* SearchListElement.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		C26FBECC2AB98E8E00DD791A /* NetworkConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfiguration.swift; sourceTree = "<group>"; };
 		C26FBECE2AB9916B00DD791A /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
 		C26FBED02AB9956200DD791A /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		C26FBED32ABACE3100DD791A /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		C26FBED52ABADA4000DD791A /* SearchListElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListElement.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +86,7 @@
 		C26FBEC42AB8484000DD791A /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				C26FBED22ABACE0E00DD791A /* Components */,
 				C26FBEC52AB84CF200DD791A /* SearchView */,
 				C26FBEB82AB8479300DD791A /* ContentView.swift */,
 			);
@@ -112,6 +117,15 @@
 				C26FBECE2AB9916B00DD791A /* NetworkingService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		C26FBED22ABACE0E00DD791A /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				C26FBED32ABACE3100DD791A /* SearchBar.swift */,
+				C26FBED52ABADA4000DD791A /* SearchListElement.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,7 +202,9 @@
 				C26FBED12AB9956200DD791A /* SearchViewModel.swift in Sources */,
 				C26FBECD2AB98E8E00DD791A /* NetworkConfiguration.swift in Sources */,
 				C26FBEC72AB84D2300DD791A /* SearchView.swift in Sources */,
+				C26FBED62ABADA4000DD791A /* SearchListElement.swift in Sources */,
 				C26FBECF2AB9916B00DD791A /* NetworkingService.swift in Sources */,
+				C26FBED42ABACE3100DD791A /* SearchBar.swift in Sources */,
 				C26FBECA2AB8618A00DD791A /* Show.swift in Sources */,
 				C26FBEB72AB8479300DD791A /* ShowsApp.swift in Sources */,
 			);

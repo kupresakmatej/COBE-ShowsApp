@@ -14,7 +14,9 @@ final class SearchViewModel: ObservableObject {
     @Published var shows = [Show]()
     
     func getDate(show: Show) -> String {
-        let date = show.premiered.split(separator: "-")
+        let showDate = show.premiered ?? "No release date found"
+        
+        let date = showDate.split(separator: "-")
         
         let year = date[0]
         
