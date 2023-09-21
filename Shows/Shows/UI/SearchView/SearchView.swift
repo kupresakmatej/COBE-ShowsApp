@@ -19,37 +19,27 @@ struct SearchView: View {
             ZStack {
                 Color("PrimaryBlack")
                 
-                ScrollView {
-                    ForEach(viewModel.shows, id: \.self) { show in
-                        NavigationLink {
-                            Text("Details view")
-                        } label: {
-                            SearchListElement(show: show, viewModel: viewModel)
+                VStack {
+                    SearchBar(searchText: $searchText)
+                        .foregroundColor(Color("PrimaryBlack"))
+                        .onSubmit {
+                            viewModel.fetchData(query: searchText)
+                        }
+                        .background(Color("PrimaryDarkGray"))
+                    
+                    ScrollView {
+                        ForEach(viewModel.shows, id: \.self) { show in
+                            NavigationLink {
+                                Text("Details view")
+                            } label: {
+                                SearchListElement(show: show, cast: viewModel.cast[show.id] ?? [], viewModel: viewModel)
+                            }
                         }
                     }
                 }
             }
             .background(Color("PrimaryDarkGray"))
             .toolbarBackground(Color("PrimaryDarkGray"), for: .navigationBar)
-            .toolbar {
-                HStack {
-                    SearchBar(searchText: $searchText)
-                        .foregroundColor(Color("PrimaryBlack"))
-                        .onSubmit {
-                            viewModel.fetchData(query: searchText)
-                        }
-                    
-                    Button() {
-                        viewModel.fetchData(query: searchText)
-                    } label: {
-                        Image(systemName: "arrow.right.square.fill")
-                            .resizable()
-                            .frame(width: 32, height: 32)
-                            .padding()
-                            .foregroundColor(Color("PrimaryYellow"))
-                    }
-                }
-            }
         }
         .foregroundColor(Color("PrimaryWhite"))
         .onAppear {

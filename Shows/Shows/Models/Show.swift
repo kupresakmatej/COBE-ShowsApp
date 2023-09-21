@@ -7,8 +7,18 @@
 
 import Foundation
 
+struct Person: Codable, Identifiable, Hashable {
+    let id: Int
+    let url: String?
+    let name: String
+}
+
 struct SearchResponse: Codable {
     let show: Show
+}
+
+struct CastResponse: Codable {
+    let person: Person
 }
 
 struct Show: Codable, Hashable {

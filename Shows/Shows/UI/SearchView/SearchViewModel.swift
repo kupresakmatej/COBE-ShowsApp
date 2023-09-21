@@ -12,6 +12,7 @@ final class SearchViewModel: ObservableObject {
     @ObservedObject var networkingService = NetworkingService()
     
     @Published var shows = [Show]()
+    @Published var cast = [Int: [Person]]()
     
     func getDate(show: Show) -> String {
         let showDate = show.premiered ?? "No release date found"
@@ -26,20 +27,35 @@ final class SearchViewModel: ObservableObject {
 
 extension SearchViewModel {
     func fetchData(query: String) {
-        let request = Request(
-            path: "/search/shows?q=",
-            method: .get,
-            type: .json,
-            parameters: nil,
-            query: query)
-        
-        networkingService.fetch(with: request) { [weak self] result in
+        networkingService.fetchSearchResponse(query: query) { [weak self] result in
             switch result {
-            case .success(let shows):
+            case .success(let response):
                 print("SUCCESS")
                 DispatchQueue.main.async {
+                    let shows = response.map { $0.show }
+                    
+                    for show in shows {
+                        self?.fetchCast(showId: show.id)
+                    }
+                    
                     self?.shows = shows
                     print("\(shows.count)")
+                }
+            case .failure(let error):
+                print("ERROR: \(error)")
+            }
+        }
+    }
+    
+    func fetchCast(showId: Int) {
+        networkingService.fetchCast(showID: showId) { [weak self] result in
+            switch result {
+            case .success(let response):
+                print("SUCCESS")
+                DispatchQueue.main.async {
+                    let cast = response.map { $0.person }
+                    
+                    self?.cast[showId] = cast
                 }
             case .failure(let error):
                 print("ERROR: \(error)")

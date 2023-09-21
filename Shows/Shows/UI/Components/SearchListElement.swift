@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SearchListElement: View {
     let show: Show
+    let cast: [Person]
     let viewModel: SearchViewModel
     
     var body: some View {
@@ -45,15 +46,20 @@ struct SearchListElement: View {
                     .font(.subheadline)
                     .foregroundColor(Color("PrimaryLightGray"))
                 
-                if !show.genres.isEmpty {
-                    Text(show.genres.joined(separator: ", "))
-                        .font(.subheadline)
-                        .foregroundColor(Color("PrimaryLightGray"))
-                } else {
-                    Text("No genres defined")
-                        .font(.subheadline)
-                        .foregroundColor(Color("PrimaryLightGray"))
+                HStack {
+                    if cast.isEmpty {
+                        Text("Unknown cast")
+                            .font(.subheadline)
+                            .foregroundColor(Color("PrimaryLightGray"))
+                    } else {
+                        ForEach(cast.prefix(2), id: \.self) { person in
+                            Text(person.name)
+                                .font(.subheadline)
+                                .foregroundColor(Color("PrimaryLightGray"))
+                        }
+                    }
                 }
+                .lineLimit(0)
             }
             .padding([.top, .bottom])
             

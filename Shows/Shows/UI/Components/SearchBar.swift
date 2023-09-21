@@ -11,12 +11,11 @@ struct SearchBar: View {
     @Binding var searchText: String
 
     var body: some View {
-        HStack {
-            TextField("Search...", text: $searchText)
-                .padding()
-                .textFieldStyle(.roundedBorder)
-                .frame(width: 300)
-        }
+        TextField("Search...", text: $searchText)
+            .textFieldStyle(.roundedBorder)
+            .frame(maxWidth: .infinity)
+            .submitLabel(.search)
+            .padding()
     }
 }
 

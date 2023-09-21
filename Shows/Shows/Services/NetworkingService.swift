@@ -9,11 +9,16 @@ import Foundation
 import SwiftUI
 
 protocol NetworkingServiceProtocol {
-    func fetch(with request: Request, completion: @escaping (Result<[Show], ErrorHandler>) -> Void)
+    func fetch<T: Codable>(of type: T.Type, with request: Request, completion: @escaping (Result<[T], ErrorHandler>) -> Void) where T: Codable
+    
+    func fetchSearchResponse(query: String, completion: @escaping (Result<[SearchResponse], ErrorHandler>) -> Void)
+    
+    func fetchCast(showID: Int, completion: @escaping (Result<[CastResponse], ErrorHandler>) -> Void)
 }
 
 final class NetworkingService: ObservableObject, NetworkingServiceProtocol {
-    func fetch(with request: Request, completion: @escaping (Result<[Show], ErrorHandler>) -> Void) {
+
+    func fetch<T>(of type: T.Type, with request: Request, completion: @escaping (Result<[T], ErrorHandler>) -> Void) where T : Decodable, T : Encodable {
         guard let urlRequest = configureRequest(request) else { return }
         let urlSession: URLSession = URLSession.shared
         
@@ -25,10 +30,9 @@ final class NetworkingService: ObservableObject, NetworkingServiceProtocol {
                 if let data = data {
                     // parse data
                     do {
-                        let json = try JSONDecoder().decode([SearchResponse].self, from: data)
-                        let shows = json.map { $0.show }
+                        let json = try JSONDecoder().decode([T].self, from: data)
                         print(json)
-                        completion(.success(shows))
+                        completion(.success(json))
                     } catch {
                         print("Error: \(error)")
                         completion(.failure(.cannotParse))
@@ -42,6 +46,47 @@ final class NetworkingService: ObservableObject, NetworkingServiceProtocol {
         }
         .resume()
     }
+    
+    func fetchSearchResponse(query: String, completion: @escaping (Result<[SearchResponse], ErrorHandler>) -> Void) {
+        let request = Request(
+            path: "/search/shows?q=",
+            method: .get,
+            type: .json,
+            parameters: nil,
+            query: query
+        )
+        
+        fetch(of: SearchResponse.self, with: request) { [weak self] result in
+            switch result {
+            case .success(let response):
+                print("SUCCESS")
+                completion(.success(response))
+            case .failure(let error):
+                print("ERROR: \(error)")
+            }
+        }
+    }
+    
+    func fetchCast(showID: Int, completion: @escaping (Result<[CastResponse], ErrorHandler>) -> Void) {
+        let request = Request(
+            path: "/shows/\(showID)/cast",
+            method: .get,
+            type: .json,
+            parameters: nil,
+            query: nil
+        )
+        
+        fetch(of: CastResponse.self, with: request) { [weak self] result in
+            switch result {
+            case .success(let response):
+                print("SUCCESS")
+                completion(.success(response))
+            case .failure(let error):
+                print("ERROR: \(error)")
+            }
+        }
+    }
+    
 }
 
 extension NetworkingService {
