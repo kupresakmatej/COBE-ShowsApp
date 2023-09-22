@@ -7,11 +7,10 @@
 
 import SwiftUI
 
-@main
 struct ShowsApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView()
         }
     }
 }
