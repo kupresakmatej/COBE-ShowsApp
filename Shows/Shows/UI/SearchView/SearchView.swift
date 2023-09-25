@@ -13,34 +13,32 @@ struct SearchView: View {
     @State private var searchText = ""
     
     private var defaultSearch = "drama"
-
+    
     var body: some View {
-        NavigationStack {
-            ZStack {
-                Color("PrimaryBlack")
+        ZStack {
+            Color("PrimaryBlack")
+            
+            VStack {
+                SearchBar(searchText: $searchText)
+                    .foregroundColor(Color("PrimaryBlack"))
+                    .onSubmit {
+                        viewModel.fetchData(query: searchText)
+                    }
+                    .background(Color("PrimaryDarkGray"))
                 
-                VStack {
-                    SearchBar(searchText: $searchText)
-                        .foregroundColor(Color("PrimaryBlack"))
-                        .onSubmit {
-                            viewModel.fetchData(query: searchText)
-                        }
-                        .background(Color("PrimaryDarkGray"))
-                    
-                    ScrollView {
-                        ForEach(viewModel.shows, id: \.self) { show in
-                            NavigationLink {
-                                Text("Details view")
-                            } label: {
-                                SearchListElement(show: show, cast: viewModel.cast[show.id] ?? [], viewModel: viewModel)
-                            }
+                ScrollView {
+                    ForEach(viewModel.shows, id: \.self) { show in
+                        NavigationLink {
+                            Text("Details view")
+                        } label: {
+                            SearchListElement(show: show, cast: viewModel.cast[show.id] ?? [], viewModel: viewModel)
                         }
                     }
                 }
             }
-            .background(Color("PrimaryDarkGray"))
-            .toolbarBackground(Color("PrimaryDarkGray"), for: .navigationBar)
         }
+        .background(Color("PrimaryDarkGray"))
+        //            .toolbarBackground(Color("PrimaryDarkGray"), for: .navigationBar)
         .foregroundColor(Color("PrimaryWhite"))
         .onAppear {
             viewModel.fetchData(query: defaultSearch)

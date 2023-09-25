@@ -10,7 +10,24 @@ import SwiftUI
 
 struct RootView: View {
     var body: some View {
-        SearchView()
+        TabView {
+            HomeView()
+                .tabItem {
+                    Label("Home", systemImage: "house.fill")
+                }
+            
+            SearchView()
+                .tabItem {
+                    Label("Search", systemImage: "magnifyingglass")
+                }
+            
+            FavoritesView()
+                .tabItem {
+                    Label("Favorites", systemImage: "heart.fill")
+                }
+        }
+        .accentColor(Color("PrimaryYellow"))
+        .preferredColorScheme(.dark)
     }
 }
 

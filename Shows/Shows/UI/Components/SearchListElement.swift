@@ -26,7 +26,7 @@ struct SearchListElement: View {
                         .frame(width: 80, height: 100)
                         .clipShape(RoundedRectangle(cornerRadius: 5))
                 case .failure:
-                    Image(systemName: "xmark.octagon")
+                    Image(systemName: "xmark")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 44, height: 44)
@@ -56,10 +56,10 @@ struct SearchListElement: View {
                             Text(person.name)
                                 .font(.subheadline)
                                 .foregroundColor(Color("PrimaryLightGray"))
+                                .lineLimit(0)
                         }
                     }
                 }
-                .lineLimit(0)
             }
             .padding([.top, .bottom])
             
