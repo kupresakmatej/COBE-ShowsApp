@@ -9,6 +9,9 @@ import Foundation
 import SwiftUI
 
 final class SearchViewModel: ObservableObject {
+//    var onHomeTapped: (() -> Void)?
+//    var onFavoritesTapped: (() -> Void)?
+
     @ObservedObject var networkingService = NetworkingService()
     
     @Published var shows = [Show]()

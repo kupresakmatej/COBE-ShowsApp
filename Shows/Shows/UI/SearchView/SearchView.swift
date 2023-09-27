@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct SearchView: View {
-    @ObservedObject var viewModel = SearchViewModel()
+    @ObservedObject var viewModel: SearchViewModel
     
-    @State private var searchText = ""
+    @State var searchText = ""
     
-    private var defaultSearch = "drama"
+    var defaultSearch = "drama"
     
     var body: some View {
         ZStack {
@@ -38,7 +38,6 @@ struct SearchView: View {
             }
         }
         .background(Color("PrimaryDarkGray"))
-        //            .toolbarBackground(Color("PrimaryDarkGray"), for: .navigationBar)
         .foregroundColor(Color("PrimaryWhite"))
         .onAppear {
             viewModel.fetchData(query: defaultSearch)
@@ -51,6 +50,6 @@ struct SearchView: View {
 
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchView()
+        SearchView(viewModel: SearchViewModel())
     }
 }
