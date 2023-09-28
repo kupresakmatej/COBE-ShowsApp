@@ -14,6 +14,10 @@ final class SearchViewModel: ObservableObject {
 
     @ObservedObject var networkingService = NetworkingService()
     
+    @Published var searchText = ""
+    
+    @Published var defaultSearch = "drama"
+    
     @Published var shows = [Show]()
     @Published var cast = [Int: [Person]]()
     

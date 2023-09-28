@@ -10,19 +10,15 @@ import SwiftUI
 struct SearchView: View {
     @ObservedObject var viewModel: SearchViewModel
     
-    @State var searchText = ""
-    
-    var defaultSearch = "drama"
-    
     var body: some View {
         ZStack {
             Color("PrimaryBlack")
             
             VStack {
-                SearchBar(searchText: $searchText)
+                SearchBar(searchText: $viewModel.searchText)
                     .foregroundColor(Color("PrimaryBlack"))
                     .onSubmit {
-                        viewModel.fetchData(query: searchText)
+                        viewModel.fetchData(query: viewModel.searchText)
                     }
                     .background(Color("PrimaryDarkGray"))
                 
@@ -40,9 +36,9 @@ struct SearchView: View {
         .background(Color("PrimaryDarkGray"))
         .foregroundColor(Color("PrimaryWhite"))
         .onAppear {
-            viewModel.fetchData(query: defaultSearch)
+            viewModel.fetchData(query: viewModel.defaultSearch)
         }
-        .onChange(of: searchText) { newSearchText in
+        .onChange(of: viewModel.searchText) { newSearchText in
             viewModel.fetchData(query: newSearchText)
         }
     }

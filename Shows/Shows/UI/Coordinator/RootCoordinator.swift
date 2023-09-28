@@ -56,10 +56,11 @@ final class RootCoordinator: Coordinator {
         tabBarAppearance.stackedLayoutAppearance.selected.iconColor = UIColor(Color("PrimaryYellow"))
            
         tabBarController.tabBar.standardAppearance = tabBarAppearance
+        tabBarController.tabBar.scrollEdgeAppearance = tabBarAppearance
         
         tabBarController.viewControllers = [homeViewController, searchViewController, favoritesViewController]
         
-        tabBarController.selectedIndex = 1
+        tabBarController.selectedIndex = 0
         
         return tabBarController
     }
