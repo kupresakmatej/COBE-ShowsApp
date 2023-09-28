@@ -59,7 +59,7 @@ final class RootCoordinator: Coordinator {
         
         tabBarController.viewControllers = [homeViewController, searchViewController, favoritesViewController]
         
-        tabBarController.selectedIndex = 0
+        tabBarController.selectedIndex = 1
         
         return tabBarController
     }

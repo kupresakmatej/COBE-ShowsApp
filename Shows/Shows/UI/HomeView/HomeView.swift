@@ -11,7 +11,11 @@ struct HomeView: View {
     @ObservedObject var viewModel: HomeViewModel
     
     var body: some View {
-        Text("hello")
+        ZStack {
+            Text("hello")
+                .foregroundColor(.white)
+        }
+        .background(.black)
     }
 }
 

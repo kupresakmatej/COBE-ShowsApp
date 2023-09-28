@@ -16,7 +16,6 @@ struct SearchBar: View {
             .frame(maxWidth: .infinity)
             .submitLabel(.search)
             .padding()
-            .foregroundColor(Color("PrimaryWhite"))
     }
 }
 
