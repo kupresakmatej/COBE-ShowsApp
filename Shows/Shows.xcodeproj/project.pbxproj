@@ -90,14 +90,12 @@
 		C26FBEB52AB8479300DD791A /* Shows */ = {
 			isa = PBXGroup;
 			children = (
+				C2A3E7D02AC55A1700881AE7 /* Lifecycle */,
 				C26FBEDB2ABD8E0300DD791A /* Info.plist */,
 				C26FBECB2AB98E6C00DD791A /* Services */,
 				C26FBEC82AB8617100DD791A /* Models */,
 				C26FBEC42AB8484000DD791A /* UI */,
-				C26FBEB62AB8479300DD791A /* ShowsApp.swift */,
 				C26FBEDC2ABD94F500DD791A /* RootView.swift */,
-				C26FBED72ABD8D8200DD791A /* AppDelegate.swift */,
-				C26FBED92ABD8DAC00DD791A /* SceneDelegate.swift */,
 				C26FBEBA2AB8479600DD791A /* Assets.xcassets */,
 				C26FBEBC2AB8479600DD791A /* Preview Content */,
 			);
@@ -188,6 +186,16 @@
 				C2A3E7C42AC41C3400881AE7 /* RootCoordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		C2A3E7D02AC55A1700881AE7 /* Lifecycle */ = {
+			isa = PBXGroup;
+			children = (
+				C26FBEB62AB8479300DD791A /* ShowsApp.swift */,
+				C26FBED92ABD8DAC00DD791A /* SceneDelegate.swift */,
+				C26FBED72ABD8D8200DD791A /* AppDelegate.swift */,
+			);
+			path = Lifecycle;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
