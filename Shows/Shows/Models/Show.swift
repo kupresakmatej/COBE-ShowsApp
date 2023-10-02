@@ -25,7 +25,11 @@ struct HomeScreenShow: Codable {
     let show: Show
 }
 
-struct Show: Codable, Hashable {
+struct Rating: Codable {
+    let average: Double?
+}
+
+struct Show: Codable, Equatable, Hashable {
     let id: Int
     let url: String
     let name: String
@@ -33,4 +37,15 @@ struct Show: Codable, Hashable {
     let genres: [String]?
     let premiered: String?
     let image: [String: String]?
+    let rating: Rating?
+
+    // Equatable conformance
+    static func ==(lhs: Show, rhs: Show) -> Bool {
+        return lhs.id == rhs.id
+    }
+
+    // Hashable conformance
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
 }

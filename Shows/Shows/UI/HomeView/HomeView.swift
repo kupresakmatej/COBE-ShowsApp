@@ -14,6 +14,50 @@ struct HomeView: View {
         ZStack {
             Color.primaryBlack
                 .ignoresSafeArea()
+            
+            VStack {
+                VStack {
+                    HStack {
+                        Text("Shows")
+                            .font(.largeTitle.bold())
+                            .foregroundColor(Color.primaryLightGray)
+                            .padding(.leading)
+                        
+                        Spacer()
+                        
+                        Button() {
+                            
+                        } label: {
+                            Text("show all")
+                                .font(.headline.bold())
+                                .foregroundColor(Color.yellow)
+                        }
+                        .padding()
+                    }
+                    
+                    ScrollView(.horizontal) {
+                        HStack {
+                            ForEach(viewModel.shows, id: \.self) { show in
+                                NavigationLink {
+                                    Text("Details view")
+                                } label: {
+                                    HomeShowElement(show: show)
+                                }
+                            }
+                        }
+                    }
+                    .padding()
+                }
+                
+                Spacer()
+                
+                VStack {
+                    
+                }
+            }
+        }
+        .onAppear {
+            viewModel.fetchShows(numberOfShows: 10)
         }
     }
 }
