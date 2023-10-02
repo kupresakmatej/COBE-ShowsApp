@@ -21,7 +21,6 @@ struct HomeView: View {
                         Text("Shows")
                             .font(.largeTitle.bold())
                             .foregroundColor(Color.primaryLightGray)
-                            .padding(.leading)
                         
                         Spacer()
                         
@@ -35,29 +34,57 @@ struct HomeView: View {
                         .padding()
                     }
                     
-                    ScrollView(.horizontal) {
-                        HStack {
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 10) {
                             ForEach(viewModel.shows, id: \.self) { show in
-                                NavigationLink {
-                                    Text("Details view")
-                                } label: {
-                                    HomeShowElement(show: show)
+                                HomeShowElement(show: show)
+                                    .onTapGesture {
+                                        print("Tapped")
+                                    }
+                            }
+                        }
+                    }
+                }
+                
+                VStack {
+                    VStack {
+                        HStack {
+                            Text("Schedule")
+                                .font(.title2.bold())
+                                .foregroundColor(Color.primaryLightGray)
+                            
+                            Spacer()
+                            
+                            Button() {
+                                
+                            } label: {
+                                Text("show all")
+                                    .font(.subheadline.bold())
+                                    .foregroundColor(Color.yellow)
+                            }
+                            .padding()
+                        }
+                        
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 10) {
+                                ForEach(viewModel.showsSchedule, id: \.self) { show in
+                                    HomeScheduleElement(show: show)
+                                        .onTapGesture {
+                                            print("Tapped")
+                                        }
                                 }
                             }
                         }
                     }
-                    .padding()
                 }
                 
                 Spacer()
-                
-                VStack {
-                    
-                }
             }
         }
         .onAppear {
             viewModel.fetchShows(numberOfShows: 10)
+
+            viewModel.fetchSchedule(date: viewModel.getDate())
         }
     }
 }

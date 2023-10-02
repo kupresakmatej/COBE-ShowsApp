@@ -15,7 +15,9 @@ protocol NetworkingServiceProtocol {
     
     func fetchCast(showID: Int, completion: @escaping (Result<[CastResponse], ErrorHandler>) -> Void)
     
-    //func fetchHomeScreenShow(showID: Int, completion: @escaping (Result<Show, ErrorHandler>) -> Void)
+    func fetchHomeScreenShow(showID: Int, completion: @escaping (Result<Show, ErrorHandler>) -> Void)
+    
+    func fetchHomeScreenSchedule(date: String, completion: @escaping (Result<[HomeScreenSchedule], ErrorHandler>) -> Void)
 }
 
 final class NetworkingService: ObservableObject, NetworkingServiceProtocol {
@@ -126,6 +128,26 @@ final class NetworkingService: ObservableObject, NetworkingServiceProtocol {
         )
 
         fetchSingleObject(of: Show.self, with: request) { result in
+            switch result {
+            case .success(let response):
+                print(response)
+                completion(.success(response))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func fetchHomeScreenSchedule(date: String, completion: @escaping (Result<[HomeScreenSchedule], ErrorHandler>) -> Void) {
+        let request = Request(
+            path: "/schedule?country=US&date=\(date)",
+            method: .get,
+            type: .json,
+            parameters: nil,
+            query: nil
+        )
+        
+        fetchArray(of: HomeScreenSchedule.self, with: request) { result in
             switch result {
             case .success(let response):
                 print(response)
