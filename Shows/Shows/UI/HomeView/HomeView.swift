@@ -12,10 +12,9 @@ struct HomeView: View {
     
     var body: some View {
         ZStack {
-            Text("hello")
-                .foregroundColor(.white)
+            Color.primaryBlack
+                .ignoresSafeArea()
         }
-        .background(.black)
     }
 }
 

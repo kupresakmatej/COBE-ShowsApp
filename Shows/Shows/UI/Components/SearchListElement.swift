@@ -39,23 +39,23 @@ struct SearchListElement: View {
             VStack(alignment: .leading) {
                 Text(show.name)
                     .font(.headline)
-                    .foregroundColor(Color("PrimaryWhite"))
+                    .foregroundColor(Color.primaryWhite)
                     .lineLimit(0)
                 
                 Text(viewModel.getDate(show: show))
                     .font(.subheadline)
-                    .foregroundColor(Color("PrimaryLightGray"))
+                    .foregroundColor(Color.primaryLightGray)
                 
                 HStack {
                     if cast.isEmpty {
                         Text("Unknown cast")
                             .font(.subheadline)
-                            .foregroundColor(Color("PrimaryLightGray"))
+                            .foregroundColor(Color.primaryLightGray)
                     } else {
                         ForEach(cast.prefix(2), id: \.self) { person in
                             Text(person.name)
                                 .font(.subheadline)
-                                .foregroundColor(Color("PrimaryLightGray"))
+                                .foregroundColor(Color.primaryLightGray)
                                 .lineLimit(0)
                         }
                     }
@@ -64,16 +64,11 @@ struct SearchListElement: View {
             .padding([.top, .bottom])
             
             Spacer()
-            
-            Image(systemName: "chevron.right")
-                .scaledToFit()
-                .foregroundColor(Color("PrimaryLightGray"))
-                .padding()
         }
         .overlay(
             Divider()
                 .frame(maxWidth: .infinity, maxHeight: 1)
-                .background(Color("PrimaryDarkGray")), alignment: .top
+                .background(Color.primaryDarkGray), alignment: .top
         )
     }
 }

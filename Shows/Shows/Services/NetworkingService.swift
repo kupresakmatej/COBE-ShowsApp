@@ -9,16 +9,17 @@ import Foundation
 import SwiftUI
 
 protocol NetworkingServiceProtocol {
-    func fetch<T: Codable>(of type: T.Type, with request: Request, completion: @escaping (Result<[T], ErrorHandler>) -> Void) where T: Codable
+    func fetchArray<T: Codable>(of type: T.Type, with request: Request, completion: @escaping (Result<[T], ErrorHandler>) -> Void) where T: Codable
     
     func fetchSearchResponse(query: String, completion: @escaping (Result<[SearchResponse], ErrorHandler>) -> Void)
     
     func fetchCast(showID: Int, completion: @escaping (Result<[CastResponse], ErrorHandler>) -> Void)
+    
+    //func fetchHomeScreenShow(showID: Int, completion: @escaping (Result<Show, ErrorHandler>) -> Void)
 }
 
 final class NetworkingService: ObservableObject, NetworkingServiceProtocol {
-
-    func fetch<T>(of type: T.Type, with request: Request, completion: @escaping (Result<[T], ErrorHandler>) -> Void) where T : Decodable, T : Encodable {
+    func fetchArray<T>(of type: T.Type, with request: Request, completion: @escaping (Result<[T], ErrorHandler>) -> Void) where T : Decodable, T : Encodable {
         guard let urlRequest = configureRequest(request) else { return }
         let urlSession: URLSession = URLSession.shared
         
@@ -47,6 +48,34 @@ final class NetworkingService: ObservableObject, NetworkingServiceProtocol {
         .resume()
     }
     
+    func fetchSingleObject<T>(of type: T.Type, with request: Request, completion: @escaping (Result<T, ErrorHandler>) -> Void) where T : Decodable, T: Encodable {
+        guard let urlRequest = configureRequest(request) else { return }
+        let urlSession: URLSession = URLSession.shared
+        
+        //crete a data task
+        urlSession.dataTask(with: urlRequest) { [weak self] data, response, error in
+            guard let httpResponse = response as? HTTPURLResponse else { return }
+            
+            if httpResponse.statusCode >= 200 && httpResponse.statusCode <= 299 {
+                if let data = data {
+                    // parse data
+                    do {
+                        let json = try JSONDecoder().decode(T.self, from: data)
+                        completion(.success(json))
+                    } catch {
+                        print("Error: \(error)")
+                        completion(.failure(.cannotParse))
+                        return
+                    }
+                }
+            } else {
+                print("Error: \(httpResponse.statusCode)")
+                completion(.failure(.notFound))
+            }
+        }
+        .resume()
+    }
+    
     func fetchSearchResponse(query: String, completion: @escaping (Result<[SearchResponse], ErrorHandler>) -> Void) {
         let request = Request(
             path: "/search/shows?q=",
@@ -56,7 +85,7 @@ final class NetworkingService: ObservableObject, NetworkingServiceProtocol {
             query: query
         )
         
-        fetch(of: SearchResponse.self, with: request) { [weak self] result in
+        fetchArray(of: SearchResponse.self, with: request) { [weak self] result in
             switch result {
             case .success(let response):
                 print("SUCCESS")
@@ -76,7 +105,7 @@ final class NetworkingService: ObservableObject, NetworkingServiceProtocol {
             query: nil
         )
         
-        fetch(of: CastResponse.self, with: request) { [weak self] result in
+        fetchArray(of: CastResponse.self, with: request) { [weak self] result in
             switch result {
             case .success(let response):
                 print("SUCCESS")
@@ -87,6 +116,25 @@ final class NetworkingService: ObservableObject, NetworkingServiceProtocol {
         }
     }
     
+    func fetchHomeScreenShow(showID: Int, completion: @escaping (Result<Show, ErrorHandler>) -> Void) {
+        let request = Request(
+            path: "/shows/\(showID)",
+            method: .get,
+            type: .json,
+            parameters: nil,
+            query: nil
+        )
+
+        fetchSingleObject(of: Show.self, with: request) { result in
+            switch result {
+            case .success(let response):
+                print(response)
+                completion(.success(response))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
 }
 
 extension NetworkingService {

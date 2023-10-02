@@ -12,15 +12,15 @@ struct SearchView: View {
     
     var body: some View {
         ZStack {
-            Color("PrimaryBlack")
+            Color.primaryBlack
             
             VStack {
                 SearchBar(searchText: $viewModel.searchText)
-                    .foregroundColor(Color("PrimaryBlack"))
+                    .foregroundColor(Color.primaryBlack)
                     .onSubmit {
                         viewModel.fetchData(query: viewModel.searchText)
                     }
-                    .background(Color("PrimaryDarkGray"))
+                    .background(Color.primaryDarkGray)
                 
                 ScrollView {
                     ForEach(viewModel.shows, id: \.self) { show in
@@ -33,8 +33,8 @@ struct SearchView: View {
                 }
             }
         }
-        .background(Color("PrimaryDarkGray"))
-        .foregroundColor(Color("PrimaryWhite"))
+        .background(Color.primaryDarkGray)
+        .foregroundColor(Color.primaryWhite)
         .onAppear {
             viewModel.fetchData(query: viewModel.defaultSearch)
         }
