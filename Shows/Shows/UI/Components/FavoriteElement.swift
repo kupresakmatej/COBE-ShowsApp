@@ -9,7 +9,24 @@ import SwiftUI
 
 struct FavoriteElement: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack(alignment: .center) {
+            RoundedRectangle(cornerRadius: 10)
+                .frame(width: 26, height: 26)
+                .foregroundColor(Color.primaryBlack)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.white, lineWidth: 1)
+                )
+            
+            Image(systemName: "heart.fill")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 14, height: 14)
+                .foregroundColor(Color.primaryLightGray)
+                .onTapGesture {
+                    
+                }
+        }
     }
 }
 

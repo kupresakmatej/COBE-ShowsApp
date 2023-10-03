@@ -24,8 +24,8 @@ struct SearchView: View {
                 
                 ScrollView {
                     ForEach(viewModel.shows, id: \.self) { show in
-                        NavigationLink {
-                            Text("Details view")
+                        Button {
+                            viewModel.onShowTapped?(show)
                         } label: {
                             SearchListElement(show: show, cast: viewModel.cast[show.id] ?? [], viewModel: viewModel)
                         }

@@ -36,6 +36,7 @@
 		C2A3E7D92ACC145C00881AE7 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A3E7D82ACC145C00881AE7 /* DetailsView.swift */; };
 		C2A3E7DB2ACC146900881AE7 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A3E7DA2ACC146900881AE7 /* DetailsViewModel.swift */; };
 		C2A3E7DD2ACC147400881AE7 /* DetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A3E7DC2ACC147400881AE7 /* DetailsCoordinator.swift */; };
+		C2A3E7DF2ACC202F00881AE7 /* FavoriteElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A3E7DE2ACC202F00881AE7 /* FavoriteElement.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		C2A3E7D82ACC145C00881AE7 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		C2A3E7DA2ACC146900881AE7 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		C2A3E7DC2ACC147400881AE7 /* DetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCoordinator.swift; sourceTree = "<group>"; };
+		C2A3E7DE2ACC202F00881AE7 /* FavoriteElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteElement.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,7 @@
 				C2A3E7D12ACABA3200881AE7 /* Colors.swift */,
 				C2A3E7D32ACAC71900881AE7 /* HomeShowElement.swift */,
 				C2A3E7D52ACAE88E00881AE7 /* HomeScheduleElement.swift */,
+				C2A3E7DE2ACC202F00881AE7 /* FavoriteElement.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				C2A3E7CD2AC4680100881AE7 /* FavoritesViewModel.swift in Sources */,
 				C26FBED62ABADA4000DD791A /* SearchListElement.swift in Sources */,
 				C2A3E7C52AC41C3400881AE7 /* RootCoordinator.swift in Sources */,
+				C2A3E7DF2ACC202F00881AE7 /* FavoriteElement.swift in Sources */,
 				C2A3E7DB2ACC146900881AE7 /* DetailsViewModel.swift in Sources */,
 				C26FBECF2AB9916B00DD791A /* NetworkingService.swift in Sources */,
 				C26FBED42ABACE3100DD791A /* SearchBar.swift in Sources */,

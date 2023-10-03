@@ -44,6 +44,7 @@ struct Show: Codable, Equatable, Hashable {
     let image: [String: String]?
     let rating: Rating?
     var airtime: String?
+    let summary: String?
 
     static func ==(lhs: Show, rhs: Show) -> Bool {
         return lhs.id == rhs.id

@@ -28,22 +28,7 @@ struct HomeShowElement: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 180, height: 220)
 
-                    ZStack(alignment: .center) {
-                        RoundedRectangle(cornerRadius: 10)
-                            .frame(width: 26, height: 26)
-                            .foregroundColor(Color.primaryBlack)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(Color.white, lineWidth: 1)
-                            )
-                        
-                        Image(systemName: "heart.fill")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 14, height: 14)
-                            .foregroundColor(Color.primaryLightGray)
-                    }
-
+                    FavoriteElement()
                 }
             }
             
@@ -73,7 +58,7 @@ struct HomeShowElement: View {
 }
 
 struct HomeShowElement_Previews: PreviewProvider {
-    static var example = Show(id: 1, url: "https://www.tvmaze.com/shows/1/under-the-dome", name: "Under the Domea a a a a a  a", language: "English", genres: ["Drama","Science-Fiction","Thriller"], premiered: "2013-06-24", image: ["medium": "https://static.tvmaze.com/uploads/images/medium_portrait/81/202627.jpg"], rating: Rating(average: 8.0), airtime: "00:35")
+    static var example = Show(id: 1, url: "https://www.tvmaze.com/shows/1/under-the-dome", name: "Under the Domea a a a a a  a", language: "English", genres: ["Drama","Science-Fiction","Thriller"], premiered: "2013-06-24", image: ["medium": "https://static.tvmaze.com/uploads/images/medium_portrait/81/202627.jpg"], rating: Rating(average: 8.0), airtime: "00:35", summary: "")
     
     static var previews: some View {
         HomeShowElement(show: example)

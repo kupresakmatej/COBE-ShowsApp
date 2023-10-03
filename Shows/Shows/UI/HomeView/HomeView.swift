@@ -82,6 +82,8 @@ struct HomeView: View {
                 .padding(.bottom)
                 
                 Spacer()
+                Spacer()
+
             }
         }
         .onAppear {
