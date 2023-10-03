@@ -20,18 +20,18 @@ final class HomeCoordinator: Coordinator {
         let vm = HomeViewModel()
         let homeView = HomeView(viewModel: vm)
         let vc = UIHostingController(rootView: homeView)
-//        vm.onSearchTapped = {
-//            _ = self.createSearchView()
-//        }
+        vm.onShowTapped = { show in
+            _ = self.createDetailsView(of: show)
+        }
         navigationController.pushViewController(vc, animated: true)
-        return vc
+        return navigationController
     }
     
-//    private func createSearchView() -> UIViewController {
-//        let vm = SearchViewModel()
-//        let searchView = SearchView(viewModel: vm)
-//        let vc = UIHostingController(rootView: searchView)
-//        navigationController.pushViewController(vc, animated: true)
-//        return vc
-//    }
+    private func createDetailsView(of show: Show) -> UIViewController {
+        let vm = DetailsViewModel()
+        let detailsView = DetailsView(viewModel: vm, show: show)
+        let vc = UIHostingController(rootView: detailsView)
+        navigationController.pushViewController(vc, animated: true)
+        return navigationController
+    }
 }

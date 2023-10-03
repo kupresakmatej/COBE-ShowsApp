@@ -14,6 +14,8 @@ final class HomeViewModel: ObservableObject {
     @Published var shows = [Show]()
     
     @Published var showsSchedule = [Show]()
+
+    var onShowTapped: ((_ show: Show) -> Void)?
     
     func getDate() -> String {
         let dateFormatter = DateFormatter()

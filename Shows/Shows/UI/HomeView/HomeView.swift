@@ -37,10 +37,11 @@ struct HomeView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 10) {
                             ForEach(viewModel.shows, id: \.self) { show in
-                                HomeShowElement(show: show)
-                                    .onTapGesture {
-                                        print("Tapped")
-                                    }
+                                Button {
+                                    viewModel.onShowTapped?(show)
+                                } label: {
+                                    HomeShowElement(show: show)
+                                }
                             }
                         }
                     }
@@ -68,15 +69,17 @@ struct HomeView: View {
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 10) {
                                 ForEach(viewModel.showsSchedule, id: \.self) { show in
-                                    HomeScheduleElement(show: show)
-                                        .onTapGesture {
-                                            print("Tapped")
-                                        }
+                                    Button {
+                                        viewModel.onShowTapped?(show)
+                                    } label: {
+                                        HomeScheduleElement(show: show)
+                                    }
                                 }
                             }
                         }
                     }
                 }
+                .padding(.bottom)
                 
                 Spacer()
             }
