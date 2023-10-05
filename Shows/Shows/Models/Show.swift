@@ -7,9 +7,24 @@
 
 import Foundation
 
-struct Person: Codable, Identifiable, Hashable {
+struct Person: Codable, Hashable, Equatable {
     let id: Int
     let url: String?
+    let name: String
+    let image: [String: String]?
+    var character: Character?
+    
+    static func ==(lhs: Person, rhs: Person) -> Bool {
+        return lhs.id == rhs.id
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+}
+
+struct Character: Codable {
+    let id: Int
     let name: String
 }
 
@@ -19,6 +34,7 @@ struct SearchResponse: Codable {
 
 struct CastResponse: Codable {
     let person: Person
+    let character: Character?
 }
 
 struct HomeScreenShow: Codable {

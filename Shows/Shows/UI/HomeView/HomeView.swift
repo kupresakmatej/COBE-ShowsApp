@@ -83,7 +83,6 @@ struct HomeView: View {
                 
                 Spacer()
                 Spacer()
-
             }
         }
         .onAppear {

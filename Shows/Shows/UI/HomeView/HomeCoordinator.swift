@@ -20,6 +20,10 @@ final class HomeCoordinator: Coordinator {
         let vm = HomeViewModel()
         let homeView = HomeView(viewModel: vm)
         let vc = UIHostingController(rootView: homeView)
+        vc.title = ""
+        
+        UINavigationBar.appearance().tintColor = .white
+        
         vm.onShowTapped = { show in
             _ = self.createDetailsView(of: show)
         }
@@ -31,6 +35,7 @@ final class HomeCoordinator: Coordinator {
         let vm = DetailsViewModel()
         let detailsView = DetailsView(viewModel: vm, show: show)
         let vc = UIHostingController(rootView: detailsView)
+        
         navigationController.pushViewController(vc, animated: true)
         return navigationController
     }

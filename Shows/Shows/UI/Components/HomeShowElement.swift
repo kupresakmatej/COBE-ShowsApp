@@ -28,7 +28,11 @@ struct HomeShowElement: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 180, height: 220)
 
-                    FavoriteElement()
+                    Button {
+                        
+                    } label: {
+                        FavoriteElement()
+                    }
                 }
             }
             

@@ -51,7 +51,7 @@ final class RootCoordinator: Coordinator {
         let tabBarAppearance = UITabBarAppearance()
         tabBarAppearance.configureWithDefaultBackground()
         tabBarAppearance.backgroundColor = UIColor(Color.primaryDarkGray)
-        
+                
         tabBarAppearance.stackedLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: UIColor(Color.primaryYellow)]
         tabBarAppearance.stackedLayoutAppearance.selected.iconColor = UIColor(Color.primaryYellow)
            

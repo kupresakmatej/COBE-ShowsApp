@@ -36,7 +36,11 @@ struct HomeScheduleElement: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 160, height: 200)
 
-                    FavoriteElement()
+                    Button {
+                        
+                    } label: {
+                        FavoriteElement()
+                    }
                 }
             }
             

@@ -12,36 +12,57 @@ struct DetailsView: View {
     var show: Show
     
     var body: some View {
-        VStack {
-            VStack {
-                AsyncImage(url: URL(string: show.image?["original"] ?? "")) { phase in
-                    switch phase {
-                    case .empty:
-                        ProgressView()
-                            .frame(width: 80, height: 100)
-                    case .success(let image):
-                        image
-                            .resizable()
-                            .frame(maxWidth: .infinity)
-                    case .failure:
-                        Image(systemName: "xmark")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 44, height: 44)
-                    @unknown default:
-                        Text("Unknown state")
-                    }
-                }
+        ZStack {
+            Color.primaryBlack
                 .ignoresSafeArea()
-                .frame(maxWidth: .infinity)
-                .aspectRatio(contentMode: .fit)
-
-                Text(show.summary ?? "Summary not found")
-                    .font(.subheadline)
-                    .foregroundColor(Color.primaryLightGray)
-            }
             
             VStack {
+                ZStack {
+                    AsyncImage(url: URL(string: show.image?["original"] ?? "")) { phase in
+                        switch phase {
+                        case .empty:
+                            ProgressView()
+                                .frame(width: 80, height: 100)
+                        case .success(let image):
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 400, height: 400)
+                                .ignoresSafeArea()
+                        case .failure:
+                            Image(systemName: "xmark")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 44, height: 44)
+                        @unknown default:
+                            Text("Unknown state")
+                        }
+                    }
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 220, height: 400)
+                    
+                    VStack {
+                        Button {
+                            
+                        } label: {
+                            FavoriteElement()
+                                .frame(width: 52, height: 52)
+                                .frame(maxWidth: .infinity, alignment: .trailing)
+                                .padding()
+                        }
+                        
+                        Spacer()
+                    }
+                }
+                
+                Text(show.summary?.removingHTMLTags ?? "Summary not found")
+                    .font(.system(size: 16))
+                    .foregroundColor(Color.primaryLightGray)
+                    .multilineTextAlignment(.leading)
+                    .lineLimit(5)
+                
+                Spacer()
+                
                 HStack {
                     Text("Cast")
                         .font(.title2.bold())
@@ -56,13 +77,25 @@ struct DetailsView: View {
                             .font(.subheadline.bold())
                             .foregroundColor(Color.yellow)
                     }
-                    .padding()
+                    .padding(.trailing)
                 }
                 
                 ScrollView(.horizontal) {
-                    
+                    HStack {
+                        ForEach(viewModel.cast[show.id] ?? [], id: \.self) { person in
+                            VStack {
+                                DetailsCastView(person: person)
+                                    .padding(.bottom)
+                            }
+                        }
+                    }
                 }
+                Spacer()
+                Spacer()
             }
+        }
+        .onAppear {
+            viewModel.fetchCast(showId: show.id)
         }
     }
 }
