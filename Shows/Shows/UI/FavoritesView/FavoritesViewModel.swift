@@ -10,6 +10,17 @@ import SwiftUI
 import UIKit
 
 final class FavoritesViewModel: ObservableObject {
-//    var onHomeTapped: (() -> Void)?
-//    var onSearchTapped: (() -> Void)?
+    @Published var favorites = [Show]()
+    
+    var onShowTapped: ((_ show: Show) -> Void)?
+            
+    private let favoritesService: FavoritesServiceProtocol
+    init(favoritesService: FavoritesServiceProtocol) {
+        self.favoritesService = favoritesService
+        favorites = favoritesService.favorites
+    }
+            
+    func refresh() {
+        favorites = favoritesService.favorites
+    }
 }

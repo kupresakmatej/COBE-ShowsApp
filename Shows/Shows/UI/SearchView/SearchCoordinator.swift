@@ -11,9 +11,11 @@ import SwiftUI
 
 final class SearchCoordinator: Coordinator {
     private var navigationController: BaseNavigationController
+    let serviceFactory: ServiceFactory
     
-    init(navigationController: BaseNavigationController) {
+    init(navigationController: BaseNavigationController, serviceFactory: ServiceFactory) {
         self.navigationController = navigationController
+        self.serviceFactory = serviceFactory
     }
     
     func start() -> UIViewController {
@@ -32,8 +34,8 @@ final class SearchCoordinator: Coordinator {
     }
     
     private func createDetailsView(of show: Show) -> UIViewController {
-        let vm = DetailsViewModel()
-        let detailsView = DetailsView(viewModel: vm, show: show)
+        let vm = DetailsViewModel(show: show, favoriteService: serviceFactory.favoriteService)
+        let detailsView = DetailsView(viewModel: vm)
         let vc = UIHostingController(rootView: detailsView)
         navigationController.pushViewController(vc, animated: true)
         return navigationController

@@ -31,7 +31,7 @@ struct HomeShowElement: View {
                     Button {
                         
                     } label: {
-                        FavoriteElement()
+//                        FavoriteElement()
                     }
                 }
             }

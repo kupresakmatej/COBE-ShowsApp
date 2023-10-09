@@ -18,16 +18,21 @@ final class RootCoordinator: Coordinator {
         return createTabBarController()
     }
     
+    let serviceFactory: ServiceFactory
+    init(serviceFactory: ServiceFactory) {
+        self.serviceFactory = serviceFactory
+    }
+    
     func createTabBarController() -> UIViewController {
         let tabBarController = UITabBarController()
         
-        let homeCoordinator = HomeCoordinator()
+        let homeCoordinator = HomeCoordinator(serviceFactory: serviceFactory)
         let homeViewController = homeCoordinator.start()
         
-        let searchCoordinator = SearchCoordinator(navigationController: BaseNavigationController())
+        let searchCoordinator = SearchCoordinator(navigationController: BaseNavigationController(), serviceFactory: serviceFactory)
         let searchViewController = searchCoordinator.start()
         
-        let favoritesCoordinator = FavoritesCoordinator(navigationController: BaseNavigationController())
+        let favoritesCoordinator = FavoritesCoordinator(navigationController: BaseNavigationController(), serviceFactory: serviceFactory)
         let favoritesViewController = favoritesCoordinator.start()
         
         homeViewController.tabBarItem = UITabBarItem(

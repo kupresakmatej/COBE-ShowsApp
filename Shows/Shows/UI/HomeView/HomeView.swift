@@ -35,7 +35,7 @@ struct HomeView: View {
                     }
                     
                     ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 10) {
+                        LazyHStack(spacing: 10) {
                             ForEach(viewModel.shows, id: \.self) { show in
                                 Button {
                                     viewModel.onShowTapped?(show)
@@ -45,6 +45,7 @@ struct HomeView: View {
                             }
                         }
                     }
+                    .frame(height: 280)
                 }
                 
                 VStack {
@@ -67,7 +68,7 @@ struct HomeView: View {
                         }
                         
                         ScrollView(.horizontal, showsIndicators: false) {
-                            HStack(spacing: 10) {
+                            LazyHStack(spacing: 10) {
                                 ForEach(viewModel.showsSchedule, id: \.self) { show in
                                     Button {
                                         viewModel.onShowTapped?(show)
@@ -77,6 +78,7 @@ struct HomeView: View {
                                 }
                             }
                         }
+                        .frame(height: 275)
                     }
                 }
                 .padding(.bottom)
@@ -93,8 +95,8 @@ struct HomeView: View {
     }
 }
 
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView(viewModel: HomeViewModel())
-    }
-}
+//struct HomeView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HomeView(viewModel: HomeViewModel())
+//    }
+//}

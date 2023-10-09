@@ -14,6 +14,27 @@ final class HomeViewModel: ObservableObject {
     @Published var shows = [Show]()
     
     @Published var showsSchedule = [Show]()
+    
+//    @Published var isFavorite = [Bool]()
+//
+//    private let favoriteService: FavoritesServiceProtocol
+//    init(shows: [Show], favoriteService: FavoritesServiceProtocol) {
+//        self.favoriteService = favoriteService
+//        self.isFavorite = shows.map { favoriteService.isFavorite(show: $0) }
+//    }
+//
+//    func toggleFavorites(show: Show) {
+//        if let index = shows.firstIndex(of: show) {
+//            isFavorite[index] = favoriteService.toggleFavorite(show: show).isAdded
+//            objectWillChange.send()
+//        }
+//    }
+//
+//    func refresh(show: Show) {
+//        if let index = shows.firstIndex(of: show) {
+//            isFavorite[index] = favoriteService.isFavorite(show: show)
+//        }
+//    }
 
     var onShowTapped: ((_ show: Show) -> Void)?
     

@@ -31,9 +31,14 @@ final class HomeCoordinator: Coordinator {
         return navigationController
     }
     
+    let serviceFactory: ServiceFactory
+    init(serviceFactory: ServiceFactory) {
+        self.serviceFactory = serviceFactory
+    }
+    
     private func createDetailsView(of show: Show) -> UIViewController {
-        let vm = DetailsViewModel()
-        let detailsView = DetailsView(viewModel: vm, show: show)
+        let vm = DetailsViewModel(show: show, favoriteService: serviceFactory.favoriteService)
+        let detailsView = DetailsView(viewModel: vm)
         let vc = UIHostingController(rootView: detailsView)
         
         navigationController.pushViewController(vc, animated: true)

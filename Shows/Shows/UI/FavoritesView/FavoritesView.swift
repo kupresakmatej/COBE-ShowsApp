@@ -10,13 +10,37 @@ import SwiftUI
 struct FavoritesView: View {
     @ObservedObject var viewModel: FavoritesViewModel
     
+    let columns = [
+        GridItem(.flexible(minimum: 150, maximum: .infinity)),
+        GridItem(.flexible(minimum: 150, maximum: .infinity))
+    ]
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            Color.primaryBlack
+                .ignoresSafeArea()
+            
+            ScrollView(.vertical) {
+                LazyVGrid(columns: columns, spacing: 16) {
+                    ForEach(viewModel.favorites, id: \.id) { show in
+                        Button {
+                            viewModel.onShowTapped?(show)
+                        } label: {
+                            FavoritesElementView(show: show)
+                        }
+                    }
+                }
+                .padding(8)
+            }
+            .onAppear {
+                viewModel.refresh()
+            }
+        }
     }
 }
 
-struct FavoritesView_Previews: PreviewProvider {
-    static var previews: some View {
-        FavoritesView(viewModel: FavoritesViewModel())
-    }
-}
+//struct FavoritesView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        FavoritesView(viewModel: FavoritesViewModel())
+//    }
+//}
