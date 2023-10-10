@@ -28,6 +28,7 @@ final class FavoritesCoordinator: Coordinator {
         let vc = UIHostingController(rootView: favoritesView)
         vc.title = ""
         
+        UINavigationBar.appearance().barStyle = .black
         UINavigationBar.appearance().tintColor = .white
         
         vm.onShowTapped = { show in
