@@ -52,11 +52,10 @@ struct DetailsView: View {
                         } label: {
                             FavoriteElement(isFavorite: $isFavorite)
                                 .frame(width: 52, height: 52)
-                                .frame(maxWidth: .infinity, alignment: .trailing)
-                                .padding()
                         }
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        .padding()
 
-                        
                         Spacer()
                     }
                 }

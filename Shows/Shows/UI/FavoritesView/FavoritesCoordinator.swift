@@ -29,10 +29,11 @@ final class FavoritesCoordinator: Coordinator {
         vc.title = ""
         
         UINavigationBar.appearance().tintColor = .white
+        UINavigationBar.appearance().barTintColor = UIColor(Color.primaryBlack)
+        UINavigationBar.appearance().backgroundColor = UIColor(Color.primaryBlack)
         
         vm.onShowTapped = { show in
             _ = self.createDetailsView(of: show)
-            print("hehe")
         }
         
         navigationController.pushViewController(vc, animated: true)

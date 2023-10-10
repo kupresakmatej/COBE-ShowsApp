@@ -49,8 +49,20 @@ final class HomeViewModel: ObservableObject {
 
 extension HomeViewModel {
     func fetchShows(numberOfShows: Int) {
+        var uniqueNumbers = Set<Int>() //set for unique
+        
+        func generateUniqueRandomNumber() -> Int {
+            var randomShow: Int
+            repeat {
+                randomShow = Int.random(in: 0...100)
+            } while uniqueNumbers.contains(randomShow)
+            
+            uniqueNumbers.insert(randomShow)
+            return randomShow
+        }
+        
         for _ in 0..<numberOfShows {
-            let randomShow = Int.random(in: 0...100)
+            let randomShow = generateUniqueRandomNumber()
             
             networkingService.fetchHomeScreenShow(showID: randomShow) { [weak self] result in
                 switch result {
@@ -65,6 +77,7 @@ extension HomeViewModel {
             }
         }
     }
+
     
     func fetchSchedule(date: String) {
         networkingService.fetchHomeScreenSchedule(date: date) { [weak self] result in

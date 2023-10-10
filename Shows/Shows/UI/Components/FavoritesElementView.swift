@@ -20,7 +20,7 @@ struct FavoritesElementView: View {
                 case .success(let image):
                     image
                         .resizable()
-                        .frame(width: 180, height: 220)
+                        .frame(width: 180, height: 240)
                 case .failure:
                     Image(systemName: "xmark")
                         .resizable()
@@ -31,7 +31,7 @@ struct FavoritesElementView: View {
                 }
             }
             .aspectRatio(contentMode: .fit)
-            .frame(width: 180, height: 220)
+            .frame(width: 180, height: 240)
             .cornerRadius(25)
             
             Button {
