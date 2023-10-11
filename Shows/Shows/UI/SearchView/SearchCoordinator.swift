@@ -26,8 +26,8 @@ final class SearchCoordinator: Coordinator {
         let vm = SearchViewModel()
         let searchView = SearchView(viewModel: vm)
         let vc = UIHostingController(rootView: searchView)
-        vm.onShowTapped = { show in
-            _ = self.createDetailsView(of: show)
+        vm.onShowTapped = { [weak self] show in
+            _ = self?.createDetailsView(of: show)
         }
         navigationController.pushViewController(vc, animated: true)
         return navigationController

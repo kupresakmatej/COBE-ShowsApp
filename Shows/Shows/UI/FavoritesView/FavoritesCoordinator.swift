@@ -31,8 +31,8 @@ final class FavoritesCoordinator: Coordinator {
         UINavigationBar.appearance().barStyle = .black
         UINavigationBar.appearance().tintColor = .white
         
-        vm.onShowTapped = { show in
-            _ = self.createDetailsView(of: show)
+        vm.onShowTapped = { [weak self] show in
+            _ = self?.createDetailsView(of: show)
         }
         
         navigationController.pushViewController(vc, animated: true)

@@ -12,7 +12,7 @@ import SwiftUI
 final class BaseNavigationController: UINavigationController { }
 
 final class RootCoordinator: Coordinator {
-    var childCoordinator: Coordinator?
+    var childCoordinators = [Coordinator]()
     
     func start() -> UIViewController {
         return createTabBarController()
@@ -27,12 +27,15 @@ final class RootCoordinator: Coordinator {
         let tabBarController = UITabBarController()
         
         let homeCoordinator = HomeCoordinator(serviceFactory: serviceFactory)
+        childCoordinators.append(homeCoordinator)
         let homeViewController = homeCoordinator.start()
         
         let searchCoordinator = SearchCoordinator(navigationController: BaseNavigationController(), serviceFactory: serviceFactory)
+        childCoordinators.append(searchCoordinator)
         let searchViewController = searchCoordinator.start()
         
         let favoritesCoordinator = FavoritesCoordinator(navigationController: BaseNavigationController(), serviceFactory: serviceFactory)
+        childCoordinators.append(favoritesCoordinator)
         let favoritesViewController = favoritesCoordinator.start()
         
         homeViewController.tabBarItem = UITabBarItem(

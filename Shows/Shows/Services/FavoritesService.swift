@@ -53,7 +53,6 @@ class FavoriteService: FavoritesServiceProtocol {
         self.persistenceService = persistenceService
         favorites = persistenceService.favoriteShows
     }
-
     
     func isFavorite(show: Show) -> Bool {
         return favorites.contains(show)

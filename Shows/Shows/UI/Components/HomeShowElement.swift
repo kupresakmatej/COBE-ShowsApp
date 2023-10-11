@@ -2,7 +2,7 @@ import SwiftUI
 
 struct HomeShowElement: View {
     let show: Show
-    
+
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -29,9 +29,13 @@ struct HomeShowElement: View {
                     .frame(width: 180, height: 220)
 
                     Button {
-                        
+//                        viewModel.toggleFavorites()
+//                        DispatchQueue.main.async {
+//                            isFavorite = viewModel.isFavorite
+//                            viewModel.refresh()
+//                        }
                     } label: {
-//                        FavoriteElement()
+                        //FavoriteElement(isFavorite: $isFavorite)
                     }
                 }
             }
@@ -61,10 +65,10 @@ struct HomeShowElement: View {
     }
 }
 
-struct HomeShowElement_Previews: PreviewProvider {
-    static var example = Show(id: 1, url: "https://www.tvmaze.com/shows/1/under-the-dome", name: "Under the Domea a a a a a  a", language: "English", genres: ["Drama","Science-Fiction","Thriller"], premiered: "2013-06-24", image: ["medium": "https://static.tvmaze.com/uploads/images/medium_portrait/81/202627.jpg"], rating: Rating(average: 8.0), airtime: "00:35", summary: "")
-    
-    static var previews: some View {
-        HomeShowElement(show: example)
-    }
-}
+//struct HomeShowElement_Previews: PreviewProvider {
+//    static var example = Show(id: 1, url: "https://www.tvmaze.com/shows/1/under-the-dome", name: "Under the Domea a a a a a  a", language: "English", genres: ["Drama","Science-Fiction","Thriller"], premiered: "2013-06-24", image: ["medium": "https://static.tvmaze.com/uploads/images/medium_portrait/81/202627.jpg"], rating: Rating(average: 8.0), airtime: "00:35", summary: "")
+//
+//    static var previews: some View {
+//        HomeShowElement(show: example)
+//    }
+//}

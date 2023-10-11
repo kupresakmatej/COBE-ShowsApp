@@ -11,6 +11,11 @@ import SwiftUI
 
 final class HomeCoordinator: Coordinator {
     private var navigationController: BaseNavigationController = BaseNavigationController()
+    let serviceFactory: ServiceFactory
+    
+    init(serviceFactory: ServiceFactory) {
+        self.serviceFactory = serviceFactory
+    }
     
     func start() -> UIViewController {
         return createHomeController()
@@ -24,16 +29,11 @@ final class HomeCoordinator: Coordinator {
         
         UINavigationBar.appearance().tintColor = .white
         
-        vm.onShowTapped = { show in
-            _ = self.createDetailsView(of: show)
+        vm.onShowTapped = { [weak self] show in
+            _ = self?.createDetailsView(of: show)
         }
         navigationController.pushViewController(vc, animated: true)
         return navigationController
-    }
-    
-    let serviceFactory: ServiceFactory
-    init(serviceFactory: ServiceFactory) {
-        self.serviceFactory = serviceFactory
     }
     
     private func createDetailsView(of show: Show) -> UIViewController {
