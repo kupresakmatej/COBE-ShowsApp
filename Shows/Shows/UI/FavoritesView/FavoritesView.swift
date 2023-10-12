@@ -26,13 +26,16 @@ struct FavoritesView: View {
                         Button {
                             viewModel.onShowTapped?(show)
                         } label: {
-                            FavoritesElementView(show: show)
+                            FavoritesElementView(favoriteService: viewModel.favoriteService, show: show)
                         }
                     }
                 }
                 .padding(8)
             }
             .onAppear {
+                viewModel.refresh()
+            }
+            .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name(rawValue: "showUnfavorited"))) { _ in
                 viewModel.refresh()
             }
         }

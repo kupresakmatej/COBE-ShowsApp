@@ -153,6 +153,7 @@
 		C26FBEC52AB84CF200DD791A /* SearchView */ = {
 			isa = PBXGroup;
 			children = (
+				C26FBED52ABADA4000DD791A /* SearchListElement.swift */,
 				C26FBEC62AB84D2300DD791A /* SearchView.swift */,
 				C26FBED02AB9956200DD791A /* SearchViewModel.swift */,
 				C2A3E7CA2AC421F300881AE7 /* SearchCoordinator.swift */,
@@ -184,14 +185,9 @@
 			isa = PBXGroup;
 			children = (
 				C26FBED32ABACE3100DD791A /* SearchBar.swift */,
-				C26FBED52ABADA4000DD791A /* SearchListElement.swift */,
 				C2A3E7D12ACABA3200881AE7 /* Colors.swift */,
-				C2A3E7D32ACAC71900881AE7 /* HomeShowElement.swift */,
-				C2A3E7D52ACAE88E00881AE7 /* HomeScheduleElement.swift */,
 				C2A3E7DE2ACC202F00881AE7 /* FavoriteElement.swift */,
 				C2A3E7E02ACC547E00881AE7 /* SummaryFilter.swift */,
-				C2A3E7E22ACD620E00881AE7 /* DetailsCastView.swift */,
-				C2A3E7EA2AD45AC300881AE7 /* FavoritesElementView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -199,6 +195,8 @@
 		C2A3E7BB2AC1713600881AE7 /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
+				C2A3E7D52ACAE88E00881AE7 /* HomeScheduleElement.swift */,
+				C2A3E7D32ACAC71900881AE7 /* HomeShowElement.swift */,
 				C2A3E7BF2AC1716600881AE7 /* HomeView.swift */,
 				C2A3E7C62AC41CC200881AE7 /* HomeCoordinator.swift */,
 				C2A3E7C82AC41EAA00881AE7 /* HomeViewModel.swift */,
@@ -209,6 +207,7 @@
 		C2A3E7BC2AC1713E00881AE7 /* FavoritesView */ = {
 			isa = PBXGroup;
 			children = (
+				C2A3E7EA2AD45AC300881AE7 /* FavoritesElementView.swift */,
 				C2A3E7BD2AC1715300881AE7 /* FavoritesView.swift */,
 				C2A3E7CE2AC4686400881AE7 /* FavoritesCoordinator.swift */,
 				C2A3E7CC2AC4680100881AE7 /* FavoritesViewModel.swift */,
@@ -238,6 +237,7 @@
 		C2A3E7D72ACC144000881AE7 /* DetailsView */ = {
 			isa = PBXGroup;
 			children = (
+				C2A3E7E22ACD620E00881AE7 /* DetailsCastView.swift */,
 				C2A3E7D82ACC145C00881AE7 /* DetailsView.swift */,
 				C2A3E7DA2ACC146900881AE7 /* DetailsViewModel.swift */,
 				C2A3E7DC2ACC147400881AE7 /* DetailsCoordinator.swift */,

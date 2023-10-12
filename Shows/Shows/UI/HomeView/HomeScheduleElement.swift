@@ -8,9 +8,22 @@
 import SwiftUI
 
 struct HomeScheduleElement: View {
-    var show: Show
+    let show: Show
     
-//    @State var isFavorite: Bool
+    @State var isFavorite = false
+    
+    let favoriteService: FavoritesServiceProtocol
+        @State private var favorites: [Show]
+        init(favoriteService: FavoritesServiceProtocol, show: Show) {
+            self.favoriteService = favoriteService
+            self.show = show
+            _favorites = State(initialValue: favoriteService.favorites)
+        }
+    
+    func simpleSuccessHaptic() {
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
+    }
         
     var body: some View {
         VStack(alignment: .leading) {
@@ -39,9 +52,14 @@ struct HomeScheduleElement: View {
                     .frame(width: 160, height: 200)
 
                     Button {
+                        isFavorite.toggle()
                         
+                        simpleSuccessHaptic()
+                        
+                        _ = favoriteService.toggleFavorite(show: show)
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "favorite"), object: isFavorite)
                     } label: {
-//                        FavoriteElement(isFavorite: $isFavorite)
+                        FavoriteElement(isFavorite: $isFavorite)
                     }
                 }
             }
@@ -67,13 +85,8 @@ struct HomeScheduleElement: View {
         }
         .background(Color.primaryDarkGray)
         .cornerRadius(10)
+        .onAppear {
+            isFavorite = favoriteService.isFavorite(show: show)
+        }
     }
 }
-
-//struct HomeScheduleElement_Previews: PreviewProvider {
-//    static var example = Show(id: 1, url: "https://www.tvmaze.com/shows/1/under-the-dome", name: "Under the Domea a a a a a  a", language: "English", genres: ["Drama","Science-Fiction","Thriller"], premiered: "2013-06-24", image: ["medium": "https://static.tvmaze.com/uploads/images/medium_portrait/81/202627.jpg"], rating: Rating(average: 8.0), airtime: "00:35", summary: "")
-//
-//    static var previews: some View {
-//        HomeScheduleElement(show: example)
-//    }
-//}

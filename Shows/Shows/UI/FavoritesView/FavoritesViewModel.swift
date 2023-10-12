@@ -14,13 +14,13 @@ final class FavoritesViewModel: ObservableObject {
     
     var onShowTapped: ((_ show: Show) -> Void)?
             
-    private let favoritesService: FavoritesServiceProtocol
-    init(favoritesService: FavoritesServiceProtocol) {
-        self.favoritesService = favoritesService
-        favorites = favoritesService.favorites
+    let favoriteService: FavoritesServiceProtocol
+    init(favoriteService: FavoritesServiceProtocol) {
+        self.favoriteService = favoriteService
+        self.favorites = favoriteService.favorites
     }
-            
+    
     func refresh() {
-        favorites = favoritesService.favorites
+        favorites = favoriteService.favorites
     }
 }

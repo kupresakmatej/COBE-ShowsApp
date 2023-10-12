@@ -12,6 +12,11 @@ struct DetailsView: View {
     
     @State var isFavorite = false
     
+    func simpleSuccessHaptic() {
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
+    }
+    
     var body: some View {
         ZStack {
             Color.primaryBlack
@@ -45,6 +50,9 @@ struct DetailsView: View {
                     VStack {
                         Button {
                             viewModel.toggleFavorites()
+                            
+                            simpleSuccessHaptic()
+                            
                             DispatchQueue.main.async {
                                 isFavorite = viewModel.isFavorite
                                 viewModel.refresh()

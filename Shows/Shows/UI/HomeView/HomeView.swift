@@ -40,7 +40,7 @@ struct HomeView: View {
                                 Button {
                                     viewModel.onShowTapped?(show)
                                 } label: {
-                                    HomeShowElement(show: show)
+                                    HomeShowElement(favoriteService: viewModel.favoriteService, show: show)
                                 }
                             }
                         }
@@ -73,7 +73,7 @@ struct HomeView: View {
                                     Button {
                                         viewModel.onShowTapped?(show)
                                     } label: {
-                                        HomeScheduleElement(show: show)
+                                        HomeScheduleElement(favoriteService: viewModel.favoriteService, show: show)
                                     }
                                 }
                             }

@@ -23,7 +23,7 @@ final class FavoritesCoordinator: Coordinator {
     }
     
     private func createFavoritesViewController() -> UIViewController {
-        let vm = FavoritesViewModel(favoritesService: serviceFactory.favoriteService)
+        let vm = FavoritesViewModel(favoriteService: serviceFactory.favoriteService)
         let favoritesView = FavoritesView(viewModel: vm)
         let vc = UIHostingController(rootView: favoritesView)
         vc.title = ""

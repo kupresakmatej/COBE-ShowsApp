@@ -22,7 +22,7 @@ final class HomeCoordinator: Coordinator {
     }
     
     private func createHomeController() -> UIViewController {
-        let vm = HomeViewModel()
+        let vm = HomeViewModel(favoriteService: serviceFactory.favoriteService)
         let homeView = HomeView(viewModel: vm)
         let vc = UIHostingController(rootView: homeView)
         vc.title = ""
