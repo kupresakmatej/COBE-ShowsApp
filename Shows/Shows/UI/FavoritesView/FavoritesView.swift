@@ -9,25 +9,21 @@ import SwiftUI
 
 struct FavoritesView: View {
     @ObservedObject var viewModel: FavoritesViewModel
-    
+
     let columns = [
         GridItem(.flexible(minimum: 150, maximum: .infinity)),
         GridItem(.flexible(minimum: 150, maximum: .infinity))
     ]
-    
+
     var body: some View {
         ZStack {
             Color.primaryBlack
                 .ignoresSafeArea()
-            
+
             ScrollView(.vertical) {
                 LazyVGrid(columns: columns, spacing: 16) {
                     ForEach(viewModel.favorites, id: \.id) { show in
-                        Button {
-                            viewModel.onShowTapped?(show)
-                        } label: {
-                            FavoritesElementView(favoriteService: viewModel.favoriteService, show: show)
-                        }
+                        FavoritesElementView(favoriteService: viewModel.favoriteService, show: show)
                     }
                 }
                 .padding(8)
@@ -41,6 +37,7 @@ struct FavoritesView: View {
         }
     }
 }
+
 
 //struct FavoritesView_Previews: PreviewProvider {
 //    static var previews: some View {

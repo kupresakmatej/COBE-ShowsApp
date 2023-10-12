@@ -24,6 +24,10 @@ struct HomeScheduleElement: View {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
     }
+    
+    func refresh() {
+        favorites = favoriteService.favorites
+    }
         
     var body: some View {
         VStack(alignment: .leading) {
@@ -57,6 +61,8 @@ struct HomeScheduleElement: View {
                         simpleSuccessHaptic()
                         
                         _ = favoriteService.toggleFavorite(show: show)
+                        
+                        isFavorite = favoriteService.isFavorite(show: show)
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "favorite"), object: isFavorite)
                     } label: {
                         FavoriteElement(isFavorite: $isFavorite)

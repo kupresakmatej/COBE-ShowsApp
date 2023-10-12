@@ -9,15 +9,14 @@ import SwiftUI
 
 struct FavoritesElementView: View {
     let show: Show
-    
+
     @State var isFavorite = false
     
     let favoriteService: FavoritesServiceProtocol
-    @State private var favorites: [Show]
+
     init(favoriteService: FavoritesServiceProtocol, show: Show) {
         self.favoriteService = favoriteService
         self.show = show
-        _favorites = State(initialValue: favoriteService.favorites)
     }
     
     func refresh() {
@@ -55,7 +54,9 @@ struct FavoritesElementView: View {
             
             Button {
                 isFavorite.toggle()
+                
                 simpleSuccessHaptic()
+                
                 if !isFavorite {
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showUnfavorited"), object: show)
                 }
