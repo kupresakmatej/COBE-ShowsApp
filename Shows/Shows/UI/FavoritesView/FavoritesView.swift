@@ -23,7 +23,11 @@ struct FavoritesView: View {
             ScrollView(.vertical) {
                 LazyVGrid(columns: columns, spacing: 16) {
                     ForEach(viewModel.favorites, id: \.id) { show in
-                        FavoritesElementView(favoriteService: viewModel.favoriteService, show: show)
+                        Button {
+                            viewModel.onShowTapped?(show)
+                        } label: {
+                            FavoritesElementView(favoriteService: viewModel.favoriteService, show: show)
+                        }
                     }
                 }
                 .padding(8)
@@ -32,7 +36,9 @@ struct FavoritesView: View {
                 viewModel.refresh()
             }
             .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name(rawValue: "showUnfavorited"))) { _ in
-                viewModel.refresh()
+                withAnimation {
+                    viewModel.refresh()
+                }
             }
         }
     }

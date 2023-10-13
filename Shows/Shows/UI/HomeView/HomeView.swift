@@ -35,7 +35,7 @@ struct HomeView: View {
                     }
                     
                     ScrollView(.horizontal, showsIndicators: false) {
-                        LazyHStack(spacing: 10) {
+                        HStack(spacing: 10) {
                             ForEach(viewModel.shows, id: \.self) { show in
                                 Button {
                                     viewModel.onShowTapped?(show)
@@ -68,7 +68,7 @@ struct HomeView: View {
                         }
                         
                         ScrollView(.horizontal, showsIndicators: false) {
-                            LazyHStack(spacing: 10) {
+                            HStack(spacing: 10) {
                                 ForEach(viewModel.showsSchedule, id: \.self) { show in
                                     Button {
                                         viewModel.onShowTapped?(show)

@@ -6,12 +6,13 @@ struct HomeShowElement: View {
     @State var isFavorite = false
     
     let favoriteService: FavoritesServiceProtocol
-        @State private var favorites: [Show]
-        init(favoriteService: FavoritesServiceProtocol, show: Show) {
-            self.favoriteService = favoriteService
-            self.show = show
-            _favorites = State(initialValue: favoriteService.favorites)
-        }
+    
+    @State private var favorites: [Show]
+    init(favoriteService: FavoritesServiceProtocol, show: Show) {
+        self.favoriteService = favoriteService
+        self.show = show
+        _favorites = State(initialValue: favoriteService.favorites)
+    }
     
     func simpleSuccessHaptic() {
         let generator = UINotificationFeedbackGenerator()
@@ -45,11 +46,11 @@ struct HomeShowElement: View {
 
                     Button {
                         isFavorite.toggle()
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "favorite"), object: isFavorite)
                         
                         simpleSuccessHaptic()
                         
                         _ = favoriteService.toggleFavorite(show: show)
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "favorite"), object: isFavorite)
                     } label: {
                         FavoriteElement(isFavorite: $isFavorite)
                     }

@@ -26,7 +26,6 @@ struct FavoriteElement: View {
                 .frame(width: 14, height: 14)
                 .foregroundColor(isFavorite ? Color.primaryYellow : Color.primaryLightGray)
         }
-        .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name(rawValue: "favorite"))) { _ in }
     }
 }
 

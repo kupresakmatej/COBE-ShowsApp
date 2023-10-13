@@ -60,9 +60,7 @@ struct FavoritesElementView: View {
                 if !isFavorite {
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showUnfavorited"), object: show)
                 }
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "favorite"), object: isFavorite)
                 _ = favoriteService.toggleFavorite(show: show)
-                refresh()
             } label: {
                 FavoriteElement(isFavorite: $isFavorite)
             }
