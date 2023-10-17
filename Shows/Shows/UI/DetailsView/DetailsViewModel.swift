@@ -15,6 +15,7 @@ final class DetailsViewModel: ObservableObject {
     @Published var cast = [Int: [Person]]()
     
     @Published var isFavorite: Bool
+    @Published var isShowAllTapped = false
             
     private let favoriteService: FavoritesServiceProtocol
         init(show: Show, favoriteService: FavoritesServiceProtocol) {

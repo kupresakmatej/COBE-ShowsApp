@@ -25,11 +25,14 @@ struct HomeView: View {
                         Spacer()
                         
                         Button() {
-                            
+                            viewModel.showWholeHomeList.toggle()
                         } label: {
                             Text("show all")
                                 .font(.headline.bold())
                                 .foregroundColor(Color.yellow)
+                        }
+                        .sheet(isPresented: $viewModel.showWholeHomeList) {
+                            HomeSheetView(viewModel: viewModel, shows: viewModel.shows)
                         }
                         .padding()
                     }
@@ -58,11 +61,14 @@ struct HomeView: View {
                             Spacer()
                             
                             Button() {
-                                
+                                viewModel.showWholeScheduleList.toggle()
                             } label: {
                                 Text("show all")
                                     .font(.subheadline.bold())
                                     .foregroundColor(Color.yellow)
+                            }
+                            .sheet(isPresented: $viewModel.showWholeScheduleList) {
+                                HomeSheetView(viewModel: viewModel, shows: viewModel.showsSchedule)
                             }
                             .padding()
                         }

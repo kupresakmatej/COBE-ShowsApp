@@ -43,6 +43,10 @@
 		C2A3E7E72AD3E65000881AE7 /* PersistentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A3E7E62AD3E65000881AE7 /* PersistentService.swift */; };
 		C2A3E7E92AD3E98200881AE7 /* ServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A3E7E82AD3E98200881AE7 /* ServiceFactory.swift */; };
 		C2A3E7EB2AD45AC300881AE7 /* FavoritesElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A3E7EA2AD45AC300881AE7 /* FavoritesElementView.swift */; };
+		C2A3E7F12ADE922A00881AE7 /* HomeSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A3E7F02ADE922A00881AE7 /* HomeSheetView.swift */; };
+		C2A3E7F32ADE92DF00881AE7 /* ShowAllElementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A3E7F22ADE92DF00881AE7 /* ShowAllElementsView.swift */; };
+		C2A3E7F52ADE942A00881AE7 /* WholeCastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A3E7F42ADE942A00881AE7 /* WholeCastView.swift */; };
+		C2A3E7F72ADE962D00881AE7 /* DetailsWholeCastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A3E7F62ADE962D00881AE7 /* DetailsWholeCastView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +88,10 @@
 		C2A3E7E62AD3E65000881AE7 /* PersistentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentService.swift; sourceTree = "<group>"; };
 		C2A3E7E82AD3E98200881AE7 /* ServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceFactory.swift; sourceTree = "<group>"; };
 		C2A3E7EA2AD45AC300881AE7 /* FavoritesElementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesElementView.swift; sourceTree = "<group>"; };
+		C2A3E7F02ADE922A00881AE7 /* HomeSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSheetView.swift; sourceTree = "<group>"; };
+		C2A3E7F22ADE92DF00881AE7 /* ShowAllElementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAllElementsView.swift; sourceTree = "<group>"; };
+		C2A3E7F42ADE942A00881AE7 /* WholeCastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WholeCastView.swift; sourceTree = "<group>"; };
+		C2A3E7F62ADE962D00881AE7 /* DetailsWholeCastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsWholeCastView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +196,7 @@
 				C2A3E7D12ACABA3200881AE7 /* Colors.swift */,
 				C2A3E7DE2ACC202F00881AE7 /* FavoriteElement.swift */,
 				C2A3E7E02ACC547E00881AE7 /* SummaryFilter.swift */,
+				C2A3E7F22ADE92DF00881AE7 /* ShowAllElementsView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -200,6 +209,7 @@
 				C2A3E7BF2AC1716600881AE7 /* HomeView.swift */,
 				C2A3E7C62AC41CC200881AE7 /* HomeCoordinator.swift */,
 				C2A3E7C82AC41EAA00881AE7 /* HomeViewModel.swift */,
+				C2A3E7F02ADE922A00881AE7 /* HomeSheetView.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -241,6 +251,8 @@
 				C2A3E7D82ACC145C00881AE7 /* DetailsView.swift */,
 				C2A3E7DA2ACC146900881AE7 /* DetailsViewModel.swift */,
 				C2A3E7DC2ACC147400881AE7 /* DetailsCoordinator.swift */,
+				C2A3E7F42ADE942A00881AE7 /* WholeCastView.swift */,
+				C2A3E7F62ADE962D00881AE7 /* DetailsWholeCastView.swift */,
 			);
 			path = DetailsView;
 			sourceTree = "<group>";
@@ -325,6 +337,7 @@
 				C2A3E7C32AC41C0B00881AE7 /* Coordinator.swift in Sources */,
 				C2A3E7DD2ACC147400881AE7 /* DetailsCoordinator.swift in Sources */,
 				C2A3E7C72AC41CC200881AE7 /* HomeCoordinator.swift in Sources */,
+				C2A3E7F32ADE92DF00881AE7 /* ShowAllElementsView.swift in Sources */,
 				C26FBED12AB9956200DD791A /* SearchViewModel.swift in Sources */,
 				C2A3E7BE2AC1715300881AE7 /* FavoritesView.swift in Sources */,
 				C26FBECD2AB98E8E00DD791A /* NetworkConfiguration.swift in Sources */,
@@ -335,10 +348,13 @@
 				C2A3E7EB2AD45AC300881AE7 /* FavoritesElementView.swift in Sources */,
 				C26FBED62ABADA4000DD791A /* SearchListElement.swift in Sources */,
 				C2A3E7C52AC41C3400881AE7 /* RootCoordinator.swift in Sources */,
+				C2A3E7F12ADE922A00881AE7 /* HomeSheetView.swift in Sources */,
 				C2A3E7DF2ACC202F00881AE7 /* FavoriteElement.swift in Sources */,
+				C2A3E7F52ADE942A00881AE7 /* WholeCastView.swift in Sources */,
 				C2A3E7E72AD3E65000881AE7 /* PersistentService.swift in Sources */,
 				C2A3E7DB2ACC146900881AE7 /* DetailsViewModel.swift in Sources */,
 				C2A3E7E32ACD620E00881AE7 /* DetailsCastView.swift in Sources */,
+				C2A3E7F72ADE962D00881AE7 /* DetailsWholeCastView.swift in Sources */,
 				C26FBECF2AB9916B00DD791A /* NetworkingService.swift in Sources */,
 				C26FBED42ABACE3100DD791A /* SearchBar.swift in Sources */,
 				C26FBEDA2ABD8DAC00DD791A /* SceneDelegate.swift in Sources */,

@@ -84,11 +84,14 @@ struct DetailsView: View {
                     Spacer()
                     
                     Button() {
-                        
+                        viewModel.isShowAllTapped.toggle()
                     } label: {
                         Text("show all")
                             .font(.subheadline.bold())
                             .foregroundColor(Color.yellow)
+                    }
+                    .sheet(isPresented: $viewModel.isShowAllTapped) {
+                        WholeCastView(viewModel: viewModel)
                     }
                     .padding(.trailing)
                 }

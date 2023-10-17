@@ -11,6 +11,9 @@ import SwiftUI
 final class HomeViewModel: ObservableObject {
     @ObservedObject var networkingService = NetworkingService()
     
+    @Published var showWholeHomeList = false
+    @Published var showWholeScheduleList = false
+    
     @Published var shows = [Show]()
     
     @Published var showsSchedule = [Show]()
